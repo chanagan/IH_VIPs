@@ -1,15 +1,19 @@
 import sys
 import time
 import os
+from pathlib import Path
+
 from dotenv import load_dotenv
 from operator import itemgetter
 
 import requests
 
+
 load_dotenv()
+
 PROPERTY_ID = os.getenv("PROPERTY_ID")
 BASE_URL = os.getenv("BASE_URL")
-CB_GET_RESERVATION = os.getenv("CB_GET_RESERVATION")
+CB_GET_RESERVATION = "getReservation"
 
 API_KEY = os.getenv("API_KEY")
 

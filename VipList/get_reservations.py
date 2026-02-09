@@ -1,6 +1,8 @@
 import time
 from dotenv import load_dotenv
 import os
+from pathlib import Path
+import sys
 
 
 import requests
@@ -10,14 +12,15 @@ from operator import itemgetter
 
 from datetime import datetime, date
 
+
 # from VipList.get_rooms import IH_PROPERTY_ID
 
-VIP_DAYS = 6
 
 load_dotenv()
+
 PROPERTY_ID = os.getenv("PROPERTY_ID")
 BASE_URL = os.getenv("BASE_URL")
-CB_GET_RESERVATIONS = os.getenv("CB_GET_RESERVATIONS")
+CB_GET_RESERVATIONS = 'getReservations'
 
 API_KEY = os.getenv("API_KEY")
 
@@ -26,6 +29,7 @@ HEADERS = {"x-api-key": API_KEY,
            "x-property-id": PROPERTY_ID,
            }
 days_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+VIP_DAYS = 6
 
 def computeNights(from_date, to_date):
     from_date = datetime.strptime(from_date, '%Y-%m-%d')

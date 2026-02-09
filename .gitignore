@@ -42,3 +42,5 @@ wheels/
 .DS_Store # macOS
 .Trashes # macOS
 *.nfs # Linux
+/Main/main.spec
+/main.spec
