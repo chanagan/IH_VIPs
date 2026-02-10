@@ -1,5 +1,6 @@
 import cProfile
 import sys
+
 '''“We talked yesterday about using Qt.UserRole 
 for LOS and auto-populating a QTableWidget from 
 an API payload.”

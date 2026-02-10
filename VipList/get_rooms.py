@@ -1,21 +1,15 @@
-import sys
 import time
-import os
-from pathlib import Path
-
-from dotenv import load_dotenv
-from operator import itemgetter
-
 import requests
 
+from operator import itemgetter
 
-load_dotenv()
+from VipList.credentials import *
 
-PROPERTY_ID = os.getenv("PROPERTY_ID")
-BASE_URL = os.getenv("BASE_URL")
+PROPERTY_ID = PROP_ID
+BASE_URL = CB_URL
+API_KEY = X_API_KEY
+
 CB_GET_RESERVATION = "getReservation"
-
-API_KEY = os.getenv("API_KEY")
 
 HEADERS = {"x-api-key": API_KEY,
            "Accept": "application/json",

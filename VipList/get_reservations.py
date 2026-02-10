@@ -1,28 +1,14 @@
 import time
-from dotenv import load_dotenv
-import os
-from pathlib import Path
-import sys
-
-
 import requests
-import json
-from types import SimpleNamespace
 from operator import itemgetter
-
 from datetime import datetime, date
+from VipList.credentials import *
 
+PROPERTY_ID = PROP_ID
+BASE_URL = CB_URL
+API_KEY = X_API_KEY
 
-# from VipList.get_rooms import IH_PROPERTY_ID
-
-
-load_dotenv()
-
-PROPERTY_ID = os.getenv("PROPERTY_ID")
-BASE_URL = os.getenv("BASE_URL")
 CB_GET_RESERVATIONS = 'getReservations'
-
-API_KEY = os.getenv("API_KEY")
 
 HEADERS = {"x-api-key": API_KEY,
            "Accept": "application/json",
@@ -49,7 +35,7 @@ def get_reservations(from_date, to_date):
         f"{BASE_URL}/{CB_GET_RESERVATIONS}",
         headers=HEADERS,
         params={
-            "propertyID": PROPERTY_ID,
+            "propertyID": PROP_ID,
             "checkInFrom": from_date,
             "checkInTo": to_date,
         }

@@ -44,3 +44,4 @@ wheels/
 *.nfs # Linux
 /Main/main.spec
 /main.spec
+/VipList/credentials.py
