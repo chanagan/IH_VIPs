@@ -16,13 +16,17 @@ HEADERS = {"x-api-key": API_KEY,
            "x-property-id": PROPERTY_ID,
            }
 
+
 def get_rooms(vip_reservations):
+    s = requests.Session()
     # for each of the reservations, get the guests and rooms
+
     workingReservations = []
     for reservation in vip_reservations:
         reservationID = reservation["reservationID"]
         start = time.perf_counter()
-        response = requests.get(
+        response = s.get(
+            # response=requests.get(
             f"{BASE_URL}/{CB_GET_RESERVATION}",
             headers=HEADERS,
             params={
@@ -49,7 +53,7 @@ def get_rooms(vip_reservations):
 
         # this bit should put the primary guest first in list
         guests_srted = sorted(tmpGuests,
-                            key=itemgetter('isMainGuest'),reverse=True)
+                              key=itemgetter('isMainGuest'), reverse=True)
         assigned = guestRecord['assigned']
         tmpRooms = []
         for rooms in assigned:
@@ -58,13 +62,14 @@ def get_rooms(vip_reservations):
             tmpRoom['roomName'] = rooms['roomName']
             tmpRooms.append(tmpRoom)
             # print(tmpRooms)
-        rooms_srted = sorted(tmpRooms,key=itemgetter('startDate'))
+        rooms_srted = sorted(tmpRooms, key=itemgetter('startDate'))
         reservation['guests'] = guests_srted
         reservation['rooms'] = rooms_srted
 
         workingReservations.append(reservation)
 
     return workingReservations
+
 
 #         "reservationID": "8176082119429",
 
