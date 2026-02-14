@@ -7,7 +7,7 @@ an API payload.”
 '''
 from PySide6.QtGui import QColor
 from PySide6.QtWidgets import QWidget, QTableWidgetItem, QTableWidget, QApplication, QMainWindow, QGridLayout, \
-    QVBoxLayout
+    QVBoxLayout, QLabel
 
 from Main.UI.main import Ui_MainWindow
 from FilterBlock.filter_proc import Filter
@@ -18,8 +18,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.setFixedSize(1200, 800)
-        self.setWindowTitle("HA Header")
-        self.setWindowTitle("HA List")
+        self.setWindowTitle("VIP Guests")
+
+        self.resLabel = QLabel("Reservations:")
+        self.statusbar.addWidget(self.resLabel)
+
+        self.resLabel.setText("Reservations: 30")
+
 
         pg_header = Filter()
         pg_list = VipList()

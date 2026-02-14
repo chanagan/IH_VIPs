@@ -2,7 +2,6 @@
 /Main/UI/main.py
 /Main/reservations.xlsx
 /VipList/UI/vip_list.py
-/VipList/.env
 
 # PyCharm project files
 .idea/
